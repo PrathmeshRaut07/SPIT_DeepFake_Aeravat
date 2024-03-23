@@ -53,8 +53,8 @@ def predict_single_audio(file_path, model):
 
     return predicted_label
 
-@app.route("/", methods=["GET", "POST"])
-def index():
+@app.route("/audio", methods=["GET", "POST"])
+def audio_detector():
     if request.method == "POST":
         # Check if the POST request has the file part
         if 'file' not in request.files:
