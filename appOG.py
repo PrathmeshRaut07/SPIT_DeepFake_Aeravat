@@ -113,7 +113,7 @@ def audio_detector():
 def youtube():
     if request.method == 'POST':
         url_to_predict = request.form['url']
-        prediction = predict_video_from_url(url_to_predict)
+        prediction = predict_video(url_to_predict)
         return render_template('youtube.html', prediction=prediction)
     return render_template('youtube.html')
 
@@ -147,7 +147,10 @@ def chat():
 @app.route('/voice')
 def voice():
     return render_template('voice.html')
-
+@app.route('/result')
+def result():
+    prediction = request.args.get('prediction')
+    return render_template('result.html', prediction=prediction)
 @app.route('/FAQ', methods=['GET', 'POST'])
 def responder():
     return render_template('FAQ.html')
